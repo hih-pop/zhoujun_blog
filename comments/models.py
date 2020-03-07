@@ -9,7 +9,7 @@ class Comments(models.Model):
     email = models.EmailField('邮箱')
     url = models.URLField('网址', blank=True)
     text = models.TextField('内容')
-    created_time = models.DateTimeField('创建时间', default=timezone.now())
+    created_time = models.DateTimeField('创建时间', default=timezone.now)
     post = models.ForeignKey('blog.Post', verbose_name='文章', on_delete=models.CASCADE)
 
     class Meta:
