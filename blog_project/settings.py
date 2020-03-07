@@ -25,7 +25,7 @@ SECRET_KEY = '$1%q20qkvka5t__)i+lh7&(qp*8lfa%!_dod@=x=4ueja2w=^b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.goodzhou.com', '47.102.108.150']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.goodzhou.com']
 
 
 # Application definition
