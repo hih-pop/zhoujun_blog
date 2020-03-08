@@ -1,6 +1,6 @@
 from fabric import task
 from invoke import Responder
-from _credentials import github_username, github_password
+from ._credentials import github_username, github_password
 
 
 def _get_github_auth_responders():
@@ -8,11 +8,11 @@ def _get_github_auth_responders():
     返回 github 用户名密码自动填充器
     """
     username_responder = Responder(
-        pattern="Username for 'https://github.com'",
+        pattern="Username for 'https://github.com':",
         response=f'{github_username}\n'
     )
     password_responder = Responder(
-        pattern=f"Password for 'https://{github_username}@github.com'",
+        pattern=f"Password for 'https://{github_username}@github.com':",
         response=f'{github_password}\n'
     )
     return [username_responder, password_responder]
