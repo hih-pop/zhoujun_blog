@@ -1,11 +1,11 @@
 from fabric import task
 from invoke import Responder
-from ._credentials import github_username, github_password
+from _credentials import github_username, github_password
 
 
 def _get_github_auth_responders():
     """
-    返回 github 用户名密码自动填充器
+    返回 GitHub 用户名密码自动填充器
     """
     username_responder = Responder(
         pattern="Username for 'https://github.com':",
@@ -28,8 +28,9 @@ def deploy(c):
     # 先停止应用
     with c.cd(supervisor_conf_path):
         cmd = f'supervisorctl stop {supervisor_program_name}'
+        c.run(cmd)
 
-    # 进入项目根目录，从git拉去新代码
+    # 进入项目根目录，从 Git 拉取最新代码
     with c.cd(project_root_path):
         cmd = 'git pull'
         responders = _get_github_auth_responders()
