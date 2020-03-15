@@ -25,6 +25,8 @@ def deploy(c):
 
     project_root_path = '~/apps/zhoujun_blog/'
 
+
+
     # 先停止应用
     with c.cd(supervisor_conf_path):
         cmd = f'supervisorctl stop {supervisor_program_name}'
@@ -37,10 +39,12 @@ def deploy(c):
         c.run(cmd, watchers=responders)
 
     # 安装依赖，迁移数据库，收集静态文件
-    with c.cd(project_root_path):
-        c.run('pip3 install -r requirements.txt')
-        c.run('python manage.py migrate')
-        c.run('python collectstatic --noinput')
+    with c.cd('~/Env/blog/bin'):
+        c.run('source activate')
+    # with c.cd(project_root_path):
+    #     # c.run('pip3 install -r requirements.txt')
+    #     c.run('python manage.py migrate')
+    #     c.run('python collectstatic --noinput')
 
     # 重新启动应用
     with c.cd(supervisor_conf_path):
